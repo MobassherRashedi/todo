@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href={% static "vendor/bootstrap-4.5.3/css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href={% static "main.css" %}>
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+
+    <script src={% static 'vendor/bootstrap-4.5.3/js/jquery/jquery.min.js'%}></script>
+    <script src={% static 'vendor/bootstrap-4.5.3/js/popper/popper.min.js'%}></script>
+    <script src={% static 'vendor/bootstrap-4.5.3/css/bootstrap.min.css'%}></script>
+
+  </body>
+
+</html>

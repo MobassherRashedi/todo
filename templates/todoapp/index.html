@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <div class="displaycenter">
+
+    <div class="head-part">
+      <h2>My Todo</h2>
+    </div>
+
+    <div class="form-part">
+      <form action='' method="post" >
+        {% csrf_token %}
+        {{form}}
+          <input class='btn btn-danger' type="submit" value="submit">
+        </form>
+      </div>
+
+      <div class="list-part">
+        <ul class="list-group">
+          {% for content in contents %}
+            <li class="list-group-item">
+              <a href="{% url "todo-detail" content.id %}">{{ content.title }}</a>
+              <form action="{% url 'todo-update' content.id %}" method="get">
+                {% csrf_token %}
+                <input class="btn btn-success btn-sm" type="submit" value="update">
+              </form>
+              <form action=" {% url 'todo-delete' content.id %}" method="post">
+                {% csrf_token %}
+                <input class="btn btn-danger btn-sm" type="submit" value="delete"></form>
+            </li>
+            {% empty %}
+            <h5>Nothing found...</h5>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+  {% endblock %}

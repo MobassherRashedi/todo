@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  {% if todo %}
+    <h4>{{ todo.title }}</h4>
+    <h5>Published :
+      {{ todo.published }}</h5>
+    <h5>Last Updated :
+      {{ todo.updated }}</h5>
+    <form action="{% url 'todo-update' todo.id %}">
+      {% csrf_token %}
+      <input class="btn btn-success" type="submit" value="update">
+    </form>
+    <form action="{% url 'todo-delete' todo.id %}" method="post">
+      {% csrf_token %}
+      <input class="btn btn-danger" type="submit" value="delete"></form>
+
+  {% else %}
+    <h4>Sorry, No details found...</h4>
+
+  {% endif %}
+
+{% endblock content %}
